@@ -1,9 +1,6 @@
-// 3.IMPORT COMPONENT
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses";
 
 function App() {
-
-// 6. BUT WE WILL OUTPUT IT VIA PROPS
   const expenses = [
     {
       id: "e1",
@@ -32,22 +29,11 @@ function App() {
   ];
 
 
-  // 4.WE CAN USE NOW ELEMENT
-  // 7.THEN WE INSERT DATA BY ATTRIBUTES
   return (
     <div>
-      <h2>Let's get started!</h2>
-      <ExpenseItem title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date}/>
-      <ExpenseItem title={expenses[1].title} amount={expenses[1].amount} date={expenses[1].date}/>
-      <ExpenseItem title={expenses[2].title} amount={expenses[2].amount} date={expenses[2].date}/>
-      <ExpenseItem title={expenses[3].title} amount={expenses[3].amount} date={expenses[3].date}/>
+      <Expenses items={expenses} />
     </div>
   );
 }
 
 export default App;
-
-
-
-// App is a root component
-// Lower case elements are built-in, but uppercase are detected as components
