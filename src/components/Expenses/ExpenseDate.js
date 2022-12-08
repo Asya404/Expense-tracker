@@ -1,6 +1,6 @@
 import './ExpenseDate.css';
 
-function ExpenseDate(props) {
+const ExpenseDate = (props) => {
 
   // 8.HERE ARE SOME METHODS TO DISPLAY DATE CORRECTLY, THEN WE INSERT IT AS SNIPPETS
   // (BETTER TO KEEP IT SEPARATLY THAN INSERT RIGHT INTO THE CODE)
@@ -9,10 +9,10 @@ function ExpenseDate(props) {
   const year = props.date.getFullYear();
 
   return (
-    <div class="expense-date">
-      <div class="expense-date__month">{month}</div>
-      <div class="expense-date__year">{year}</div>
-      <div class="expense-date__day">{day}</div>
+    <div className="expense-date">
+      <div className="expense-date__month">{month}</div>
+      <div className="expense-date__year">{year}</div>
+      <div className="expense-date__day">{day}</div>
     </div>
   );
 }

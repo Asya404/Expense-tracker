@@ -8,7 +8,7 @@ import './Card.css';
 // WE NEED TO TELL OUR COMPONENT THAT IT HAVE TO APPLY CLASSES (PROPS.CLASSNAME FOR ANY WHICH WE WILL SET)
 // WE CAN SET HERE CARD AS A DEFAULT CLASS WHICH IS ALWAYS APPLIED
 
-function Card (props) {
+const Card = (props) => {
     const classes = 'card ' + props.className;
 
     return <div className={classes}>{props.children}</div>
