@@ -18,6 +18,7 @@ const ExpenseForm = (props) => {
     setEnteredDate(event.target.value);
   };
 
+  // on submit we gather data in obj, then lift it up by props, then update inputs to empty
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -26,12 +27,6 @@ const ExpenseForm = (props) => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-
-
-
-    // WE EXECUTE FUNTION AND PASS expenseData OBJECT AS AN ARGUMENT
-    // USUALLY WE EXECUTE PROPS DOWN FROM PARENT, BUT HERE WE EXECUTE IT DOWN
-    // FOR EVENTS LIKE ONCHANGE, FUNCTION EXECUTES BEHIND THE SCENES BUT HERE WE DO IT MANUALLY
 
     props.onSubmitExpenseData(expenseData);
 
