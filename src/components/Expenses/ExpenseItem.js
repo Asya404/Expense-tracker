@@ -1,52 +1,17 @@
-import React, { useState } from "react";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
-  const [title, setTitle] = useState(props.title);
-
-  const clickHandler = () => {
-    setTitle('Updated');
-  };
-
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
-        <h2>{title}</h2>
+        <h2>{props.title}</h2>
         <div className="expense-item__price">${props.amount}</div>
       </div>
-
-      <button onClick={clickHandler}>Change title</button>
     </Card>
   );
 };
 
 export default ExpenseItem;
-
-
-
-
-// - (PARAMETER PROPS IT'S A NEW OBJECT WITH INSERTED DATA; ATTR ARE THE KEYS OF THIS OBJECT)
-// (WE PASS DATA FROM A COMPONENT TO A DIRECT CHILD OF COMPONENT, AND WE CAN'T SKIP ANOTHER EL)
-
-// - ALSO WE CAN ADD AN EVENT LISTENER TO THE EL (we just point to the function, not execute it)
-// BETTER TO CALL SUCH FUNCTIONS AS SMTH HANDLER
-
-// - STATE CONCEPT
-// WE CAN'T CHANGE TITLE ON CLICK BY CHANGING IT IN FUNCTION
-// BECAUSE AFTER INITIAL RENDERING EXPENSEITEM FUNCTION DOES'T CALLED SECOND TIME
-// FOR MAKING THAT, 
-// 1. WE NEED TO IMPORT USE STATE FUNCTION FROM REACT LIBRARY
-// 2. WE REGISTER STATE (PROPS.TITLE) WITH USESTATE FUNCTION - IT'S A REACT HOOK
-// 3. FIRST ELEMENT IS A CURRENT STATE VALUE (POINTER TO PROPS.TITLE IN USESTATE)
-// 4. IN THE USE STATE IT'S AN INITIAL VALUE
-// 5. THE SECOND ELEMENT IS AN UPDATING FUNCTION
-// 6. AND THEN WE CALL THIS FUNCTION WITH DESIRED VALUE INSIDE, WHERE WE NEED IT
-// -SO IT WILL CALL COMPONENT FUNCTION AGAIN AND CHANGE THE VALUE
-// -IT IS AFFECTED ON ONE SPECIFIC COMPONENT INSTANCE (OF 4 HERE) 
-// -WE USE THE FIRST VALUE IN JSX (TITLE), BECAUSE WHEN COMPONENT FUNCTION IS BEING EXECUTED FIRST TIME,
-// THE INITIAL VALUE IN USE STATE (PROPS.TITLE) IS ONLY CONSIDERED
-// SO WE DON'T NEED TO DEFINE IT
-// FUNCTION ONLU UPDATES THE VALUE AND UPDATED VALUE GET STORED IN THE TITLE

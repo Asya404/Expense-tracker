@@ -11,18 +11,18 @@ const Expenses = (props) => {
     setFilteredYear(data);
   };
 
-  console.log(filteredYear);
 
+  // HERE ALSO WE CAN USE STATE FOR TWO WAY BINDING
+  // INITIAL YEAR WILL BE 2020, THEN WE PASS FILTERED YEAR BY PROPS DOWN TO SET THE CHOSEN YEAR
 
-  // here also we can use state for two way binding
-  // we pass filteredYear so initial year will be 2020, then chosen
+  // HERE WE USE MAP METHOD TO DISPLAY ELEMENTS DYNAMICALLY (RENDER LISTS DYNAMICALLY)
+  // WE TRANSFORM (MAP) EVERY EXPENSE OBJECT INTO AN EXPENSE ITEM ELEMENT
+  // OR TRANSFORM OUR ARRAY TO AN ARRAY FULL OF JSX ITEMS
   return (
     <Card className="expenses">
       <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-      <ExpenseItem title={props.items[0].title} amount={props.items[0].amount} date={props.items[0].date} />
-      <ExpenseItem title={props.items[1].title} amount={props.items[1].amount} date={props.items[1].date} />
-      <ExpenseItem title={props.items[2].title} amount={props.items[2].amount} date={props.items[2].date} />
-      <ExpenseItem title={props.items[3].title} amount={props.items[3].amount} date={props.items[3].date} />
+
+      {props.items.map(expense => <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date} /> )}
     </Card>
   );
 };
