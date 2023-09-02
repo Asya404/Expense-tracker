@@ -1,18 +1,12 @@
 <template>
-  <ul class="expenses-list">
-    <expense-item
-      v-for="expense in expenses"
-      :expense="expense"
-      :key="expense.id"
-    ></expense-item>
-  </ul>
+  <expenses-list :expenses="expenses"></expenses-list>
 </template>
 
 <script>
-import ExpenseItem from './components/expense-items/ExpenseItem.vue';
+import ExpensesList from './components/expense-items/ExpensesList.vue';
 
 export default {
-  components: { ExpenseItem },
+  components: { ExpensesList },
   data() {
     return {
       expenses: [
@@ -48,10 +42,5 @@ html {
 body {
   margin: 0;
   background-color: #3f3f3f;
-}
-
-.expenses-list {
-  list-style: none;
-  padding: 0;
 }
 </style>
