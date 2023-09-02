@@ -1,11 +1,11 @@
 <template>
-  <ul class="expenses-list">
+  <base-card class="expenses-list">
     <expense-item
       v-for="expense in expenses"
       :expense="expense"
       :key="expense.id"
     ></expense-item>
-  </ul>
+  </base-card>
 </template>
 
 <script>
@@ -21,7 +21,10 @@ export default {
 
 <style scoped>
 .expenses-list {
-  list-style: none;
-  padding: 0;
+  padding: 1rem;
+  background-color: #1f1f1f;
+  margin: 2rem auto;
+  width: 50rem;
+  max-width: 95%;
 }
 </style>

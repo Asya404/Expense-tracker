@@ -1,12 +1,14 @@
 <template>
+  <add-expense></add-expense>
   <expenses-list :expenses="expenses"></expenses-list>
 </template>
 
 <script>
+import AddExpense from './components/expense-items/AddExpense.vue';
 import ExpensesList from './components/expense-items/ExpensesList.vue';
 
 export default {
-  components: { ExpensesList },
+  components: { ExpensesList, AddExpense },
   data() {
     return {
       expenses: [

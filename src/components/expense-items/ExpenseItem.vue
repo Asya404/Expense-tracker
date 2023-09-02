@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <div>
     <base-card class="expense-item">
       <div class="expense-date">
         <div class="expense-date__month">
@@ -19,7 +19,7 @@
       </div>
       <base-button>X</base-button>
     </base-card>
-  </li>
+  </div>
 </template>
 
 <script>
@@ -88,5 +88,12 @@ export default {
   border: 1px solid #fff;
   padding: 0.5rem;
   border-radius: 12px;
+}
+
+@media (min-width: 480px) {
+  .expense-item__price {
+    font-size: 1.25rem;
+    padding: 0.5rem 1.5rem;
+  }
 }
 </style>
