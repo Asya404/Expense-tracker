@@ -15,9 +15,9 @@
 
       <div class="expense-item__description">
         <h2>{{ expense.title }}</h2>
-        <div class="expense-item__price">{{ expense.price }}</div>
+        <div class="expense-item__price">{{ expense.price }}$</div>
       </div>
-      <base-button>X</base-button>
+      <base-button mode="button-cancel">X</base-button>
     </base-card>
   </div>
 </template>

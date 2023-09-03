@@ -3,24 +3,31 @@
     <form v-if="isActive">
       <div class="new-expense__controls">
         <div class="new-expense__control">
-          <label>Title</label>
-          <input type="text" placeholder="Title" />
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" ref="titleInput" />
         </div>
         <div class="new-expense__control">
-          <label>Amount</label>
-          <input type="text" placeholder="Amount" />
+          <label for="amount">Amount</label>
+          <input id="amount" name="amount" type="text" ref="amountInput" />
         </div>
         <div class="new-expense__control">
-          <label>Date</label>
-          <input type="date" placeholder="Date" />
+          <label for="date">Date</label>
+          <input id="date" name="date" type="date" ref="dateInput" />
         </div>
       </div>
       <div class="new-expense__actions">
-        <button type="submit">Add expense</button>
-        <button @click="toggleActive" type="button">Cancel</button>
+        <base-button @click.prevent="submitData" mode="button-purple" type="submit"
+          >Add expense</base-button
+        >
+        <base-button mode="button-purple" @click="toggleActive" type="button"
+          >Cancel</base-button
+        >
       </div>
     </form>
-    <button v-if="!isActive" @click="toggleActive">Add new expense</button>
+
+    <base-button mode="button-purple" v-if="!isActive" @click="toggleActive"
+      >Add new expense</base-button
+    >
   </div>
 </template>
 
@@ -33,9 +40,19 @@ export default {
   },
   methods: {
     toggleActive() {
-        this.isActive = !this.isActive;
-    }
-  }
+      this.isActive = !this.isActive;
+    },
+    submitData() {
+      const expense = {
+        id: this.$refs.titleInput.value,
+        title: this.$refs.titleInput.value,
+        date: new Date(this.$refs.dateInput.value),
+        price: this.$refs.amountInput.value,
+      };
+      console.log(expense);
+      this.$emit('submit-data', expense);
+    },
+  },
 };
 </script>
 
@@ -77,16 +94,5 @@ export default {
 
 .new-expense__actions {
   text-align: right;
-}
-
-.new-expense button {
-  font: inherit;
-  cursor: pointer;
-  padding: 1rem 2rem;
-  border: 1px solid #40005d;
-  background-color: #40005d;
-  color: #fff;
-  border-radius: 12px;
-  margin-right: 1rem;
 }
 </style>

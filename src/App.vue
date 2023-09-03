@@ -1,5 +1,5 @@
 <template>
-  <add-expense></add-expense>
+  <add-expense @submit-data="submitData"></add-expense>
   <expenses-list :expenses="expenses"></expenses-list>
 </template>
 
@@ -16,17 +16,23 @@ export default {
           id: 'New desk (wooden)',
           title: 'New desk (wooden)',
           date: new Date(2023, 5, 12),
-          price: '450$',
+          price: '450',
         },
         {
           id: 'Car Insurance',
           title: 'Car Insurance',
           date: new Date(2023, 2, 28),
-          price: '294.67$',
+          price: '294.67',
         },
       ],
     };
   },
+  methods: {
+    submitData(expense) {
+      this.expenses.unshift(expense);
+      console.log(this.expenses);
+    }
+  }
 };
 </script>
 
