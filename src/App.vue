@@ -30,7 +30,6 @@ export default {
   methods: {
     submitData(expense) {
       this.expenses.unshift(expense);
-      console.log(this.expenses);
     }
   }
 };
@@ -40,6 +39,8 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 

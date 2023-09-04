@@ -1,5 +1,14 @@
 <template>
-  <div class="new-expense">
+  <base-dialog @close="toggleActiveDialog" v-if="!inputIsValid" title="Invalid input">
+    <template #default>
+      <p>Unfortunately, at least one input is invalid</p>
+      <p>Please check all inputs</p>
+    </template>
+    <template #actions>
+      <base-button mode="button-purple" @click="toggleActiveDialog">Okay</base-button>
+    </template>
+  </base-dialog>
+  <base-card class="new-expense">
     <form v-if="isActive">
       <div class="new-expense__controls">
         <div class="new-expense__control">
@@ -16,7 +25,10 @@
         </div>
       </div>
       <div class="new-expense__actions">
-        <base-button @click.prevent="submitData" mode="button-purple" type="submit"
+        <base-button
+          @click.prevent="submitData"
+          mode="button-purple"
+          type="submit"
           >Add expense</base-button
         >
         <base-button mode="button-purple" @click="toggleActive" type="button"
@@ -28,7 +40,7 @@
     <base-button mode="button-purple" v-if="!isActive" @click="toggleActive"
       >Add new expense</base-button
     >
-  </div>
+  </base-card>
 </template>
 
 <script>
@@ -36,18 +48,31 @@ export default {
   data() {
     return {
       isActive: false,
+      inputIsValid: true,
     };
   },
   methods: {
     toggleActive() {
       this.isActive = !this.isActive;
     },
+    toggleActiveDialog() {
+      this.inputIsValid = true;
+    },
     submitData() {
+      const titleValue = this.$refs.titleInput.value;
+      const amountValue = this.$refs.amountInput.value;
+      const dateValue = new Date(this.$refs.dateInput.value);
+
+      if (titleValue === '' || amountValue === '' || dateValue === '') {
+        this.inputIsValid = false;
+        return;
+      }
+
       const expense = {
-        id: this.$refs.titleInput.value,
-        title: this.$refs.titleInput.value,
-        date: new Date(this.$refs.dateInput.value),
-        price: this.$refs.amountInput.value,
+        id: titleValue,
+        title: titleValue,
+        date: dateValue,
+        price: amountValue,
       };
       console.log(expense);
       this.$emit('submit-data', expense);
