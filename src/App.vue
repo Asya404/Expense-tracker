@@ -1,6 +1,6 @@
 <template>
   <add-expense @submit-data="submitData"></add-expense>
-  <expenses-list :expenses="expenses"></expenses-list>
+  <expenses-list @remove-item="removeItem" :expenses="expenses"></expenses-list>
 </template>
 
 <script>
@@ -30,6 +30,10 @@ export default {
   methods: {
     submitData(expense) {
       this.expenses.unshift(expense);
+    },
+    removeItem(expenseId) {
+      this.expenses = this.expenses.filter(expenseItem => expenseItem.id !== expenseId);
+      console.log(this.expenses);
     }
   }
 };

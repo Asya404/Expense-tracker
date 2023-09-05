@@ -1,28 +1,29 @@
 <template>
-  <div class="backdrop" @click="$emit('close')"></div>
-  <div class="dialog">
-   
+  <teleport to="body">
+    <div class="backdrop" @click="$emit('close')"></div>
+    <div class="dialog">
       <slot name="title">
         <h2 class="title">{{ title }}</h2>
       </slot>
-    
-    <div class="wrapper">
-      <div class="menu">
-        <slot></slot>
-      </div>
-      <div class="actions">
-        <slot name="actions">
-          <base-button @click="$emit('close')"></base-button>
-        </slot>
+
+      <div class="wrapper">
+        <div class="menu">
+          <slot></slot>
+        </div>
+        <div class="actions">
+          <slot name="actions">
+            <base-button @click="$emit('close')"></base-button>
+          </slot>
+        </div>
       </div>
     </div>
-  </div>
+  </teleport>
 </template>
 
 <script>
 export default {
   props: ['title'],
-  emits: ['close']
+  emits: ['close'],
 };
 </script>
 

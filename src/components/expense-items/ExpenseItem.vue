@@ -17,7 +17,7 @@
         <h2>{{ expense.title }}</h2>
         <div class="expense-item__price">{{ expense.price }}$</div>
       </div>
-      <base-button mode="button-cancel">X</base-button>
+      <base-button @click="removeItem" mode="button-cancel">X</base-button>
     </base-card>
   </div>
 </template>
@@ -25,6 +25,12 @@
 <script>
 export default {
   props: ['expense'],
+  emits: [''],
+  methods: {
+    removeItem() {
+      this.$emit('remove-item', this.expense.id);
+    }
+  }
 };
 </script>
 

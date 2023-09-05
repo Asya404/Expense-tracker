@@ -4,6 +4,7 @@
       v-for="expense in expenses"
       :expense="expense"
       :key="expense.id"
+      @remove-item="removeItem"
     ></expense-item>
   </base-card>
 </template>
@@ -16,6 +17,11 @@ export default {
   components: {
     ExpenseItem,
   },
+  methods: {
+    removeItem(expenseId) {
+      this.$emit('remove-item', expenseId);
+    }
+  }
 };
 </script>
 
