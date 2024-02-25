@@ -1,5 +1,7 @@
-# Expense Tracker (Vue.js) 💰
+# Expense Tracker 💰
 
-Explore my Expense Tracker project built with Vue.js. It showcases expense management with intuitive add/delete functionality and smooth error handling via a modal.
+Built an expenses tracking app with logic for adding, removing, managing expense entries.
+
+Developed with Vue.js, Vuex.
 
 https://expense-tracker-vue-app.netlify.app/
